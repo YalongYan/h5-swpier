@@ -4,205 +4,134 @@
 <head>
     <meta charset="utf-8">
     <title>相册</title>
-    <!-- Link Swiper's CSS -->
-    <script src="https://res2.tuwan.com/templet/play/chat/js/jquery.js"></script>
-    <link rel="stylesheet" href="https://asset.tuwan.com/chatroom/swiper/swiper5.4.5.min.css">
-    <link rel="stylesheet"href="https://asset.tuwan.com/chatroom/css/animate.min_4.1.1.css"/>
-    <!-- Demo styles -->
-    <style>
-    *{
-        -webkit-tap-highlight-color:transparent;
-    }
-    .bodyCtn {
-        background: #eee;
-        font-size: 1.8667vw;
-        color:#000;
-        margin: 0;
-        padding: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-    }
-	.swiper-wrapper{
-        transition-delay:.3s;
-    }
-    .swiper-container {
-        width: 100vw;
-        height: 100vh;
-    }
-    .swiper-slide {
-        text-align: center;
-        font-size: 2.4vw;
-        background: #fff;
-    }
-	.swiper-slide:nth-child(2){
-		background:#3183ff;
-		color:#fff;
-    }
-	.swiper-slide .p {
-		transform:translateX(-200px);
-		opacity:0;
-		transition:all .4s;
-    }
-	.ani-slide .p {
-		transform:translateX(0);
-		opacity:1;
-    }
-    .swiper-slide.color1 {
-        background-color: #e9b4b4;
-    }
-    .swiper-slide.color2 {
-        background-color: green;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+    <link rel="stylesheet"href="./assets/css/animate.min_4.1.1.css"/>
+    <link rel="stylesheet"href="./assets/css/swiper5.4.5.min.css"/>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet"href="./assets/css/index.css"/>
 
-    /* start 花瓣效果 */
-    .ele-effect {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: 1;
-    }
-    .ele-effect .effect-wrap {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-    }
-    .ele-effect .effect-wrap .colorCtn {
-        position: absolute;
-        background-size: cover;
-        background-repeat: no-repeat;
-        transform-origin: center;
-        animation: snow 5s linear infinite;
-        width: 10vw;
-        height: 10vw;
-        animation-duration: 5s;
-        background-image: url(https://asset.tuwan.com/chartRoom/bgmActive.png);
-    }
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/swiper-5.4.5.min.js"></script>
 
-    @keyframes snow {
-        0% {
-            transform: rotate(0deg) translate(0,0)
-        }
-        to {
-            transform: rotate(0deg) translate(100vw, 100vh)
-        }
-    }
-    /* end 花瓣效果 */
-    .animate__animated {
-        opacity: 0;
-    }
-    .wordCtn {
-        font-size: 4vw;
-    }
-    .musicBtn {
-        position: absolute;
-        top: 2.6667vw;
-        right: 20px;
-        cursor: pointer;
-        z-index: 2;
-        font-size: 5.3333vw;
-    }
-    .itemCtn1 {
-        margin-top: 20vw;
-    }
-    </style>
 </head>
 <body class="bodyCtn">
-    <div class="musicBtn">播放</div>
+    <div id="chat-tips" style="position: fixed; opacity: 0; z-index: 10001499; background: rgba(0,0,0,0.7); line-height: 42px;min-width:300px; padding:0 10px; left:50%; top:50%; color: #fff; font-size: 4vw; border-radius: 6px; text-align: center; transform: translate(-50%, -50%); "></div>
+    <div class="musicBtn off"></div>
+    <img class="backIcon" src="./assets/album/backIcon.png" />
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide color1">
+            <div class="swiper-slide swiperItem1">
+                <!-- 吊坠 -->
+                <div>
+                    <div class="dzImg dz1"></div>
+                    <div class="dzImg dz2"></div>
+                    <div class="dzImg dz3"></div>
+                    <div class="dzImg dz4"></div>
+                    <div class="dzImg dz5"></div>
+                </div>
                 <!-- 花瓣效果 -->
                 <div class="ele-effect eles">
                     <div class="effect-wrap">
-                        <i class="colorCtn" style="left: 15.7333vw; top: -34vw; animation-duration: 5s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 257px; top: -523px; animation-duration: 6s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 87px; top: -397px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 148px; top: -469px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 108px; top: -224px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -87px; top: -19px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -148px; top: -169px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -108px; top: -124px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
+                        <i class="colorCtn" style="left: 30vw; top: 70vw; animation-duration: 10s; background-image: url(./assets/album/flower/flower_1.png);"></i>
+                        <i class="colorCtn" style="left: 10vw; top: -24vw; animation-duration: 10s; background-image: url(./assets/album/flower/flower_1.png);"></i>
+                        <i class="colorCtn" style="left: 34.2667vw; top: -69.7333vw; animation-duration: 8s; background-image: url(./assets/album/flower/flower_2.png);"></i>
+                        <i class="colorCtn" style="left: 11.6vw; top: -52.9333vw;  animation-duration: 14s; background-image: url(./assets/album/flower/flower_3.png);"></i>
+                        <i class="colorCtn" style="left: 19.7333vw; top: -62.5333vw; animation-duration: 13s; background-image: url(./assets/album/flower/flower_4.png);"></i>
+                        <i class="colorCtn" style="left: -30vw; top: 30vw; animation-duration: 8s; background-image: url(./assets/album/flower/flower_5.png);"></i>
+                        <i class="colorCtn" style="left: 14.4vw; top: 29.8667vw; animation-duration: 8s; background-image: url(./assets/album/flower/flower_5.png);"></i>
+                        <i class="colorCtn" style="left: -30vw; top: -50vh;  animation-duration: 14s; background-image: url(./assets/album/flower/flower_6.png);"></i>
+                        <i class="colorCtn" style="left: 10vw; top: 80vh; animation-duration: 13s; background-image: url(./assets/album/flower/flower_1.png);"></i>
+                        <i class="colorCtn" style="left: 55vw; top: 78vh; animation-duration: 13s; background-image: url(./assets/album/flower/flower_2.png);"></i>
+                        <i class="colorCtn" style="left: -20vw; top: 10vh; animation-duration: 10s; background-image: url(./assets/album/flower/flower_1.png);"></i>
+                        <i class="colorCtn" style="left: 40vw; top: 70vh; animation-duration: 13s; background-image: url(./assets/album/flower/flower_1.png);"></i>
+                        <i class="colorCtn" style="left: 5vw; top: 50vh; animation-duration: 13s; background-image: url(./assets/album/flower/flower_2.png);"></i>
                     </div>
                 </div>
-                <div class="itemCtn1">
-                    <div class="wordCtn animate__animated" data-class="animate__fadeInUp">11111An animated element</div>
-                    <div class="wordCtn animate__animated" data-class="animate__fadeInRight">An animated element</div>
+                <div class="topCtn">
+                    <div class="wordContainer">
+                        <img class="firstMeet animate__animated animate__animated_step1_1" data-class="animate__fadeInRight" src="./assets/album/step1/step1_firstMeet.png"/>
+                        <div class="wordCtn animate__animated animate__animated_step1_2" data-class="animate__fadeInUp" style="margin-top: -8vw;">2021年11月11日</div>
+                        <div class="wordCtn animate__animated animate__animated_step1_3" data-class="animate__fadeInUp">我们初遇于&nbsp;<span class="yellowWord">火星基地</span></div>
+                        <div class="wordCtn animate__animated animate__animated_step1_4" data-class="animate__fadeInUp">一见倾心</div>
+                        <div class="wordCtn animate__animated animate__animated_step1_5" data-class="animate__fadeInUp">如今已走过<span class="yellowWord">111</span>天</div>
+                        <div class="wordCtn animate__animated animate__animated_step1_6" data-class="animate__fadeInUp">携手走过了第<span class="yellowWord">5</span>个年头</div>
+                        <div class="wordCtn animate__animated animate__animated_step1_7" data-class="animate__fadeInUp">相互陪伴，共度时光</div>
+                        <div class="wordCtn animate__animated animate__animated_step1_8" data-class="animate__fadeInUp">这份缘分弥足珍贵</div>
+                    </div>
+                    <div class="rightFlowerCtn">
+                        <img class="flowerCtn animate__animated animate__animated_step1_flower" data-class="animate__fadeInUp" src="./assets/album/step1/step1_flower.png" />
+                    </div>
+                    <img class="floorImg animate__animated animate__animated_step1_tizi" data-class="animate__fadeIn" src="./assets/album/step1/tizi.png" />
+                </div>
+                <img class="bottomPersonCtn animate__animated animate__animated_step1_people" data-class="animate__fadeInUp_step1_small" src="./assets/album/step1/step1_people.png" />
+                <div class="bottomFlowerGroup">
+                    <img class="btFlower flower1 animate__animated animate__animated_step1_4flower" data-class="animate__fadeInUp" src="./assets/album/step1/step1_left1.png" />
+                    <img class="btFlower flower2 animate__animated animate__animated_step1_4flower" data-class="animate__fadeInUp" src="./assets/album/step1/step1_left2.png" />
+                    <img class="btFlower flower3 animate__animated animate__animated_step1_4flower" data-class="animate__fadeInUp" src="./assets/album/step1/step1_right1.png" />
+                    <img class="btFlower flower4 animate__animated animate__animated_step1_4flower" data-class="animate__fadeInUp" src="./assets/album/step1/step1_right2.png" />
                 </div>
             </div>
-            <div class="swiper-slide">
-                <!-- 花瓣效果 -->
-                <div class="ele-effect eles">
-                    <div class="effect-wrap">
-                        <i class="colorCtn" style="left: 15.7333vw; top: -34vw; animation-duration: 5s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 257px; top: -523px; animation-duration: 6s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 87px; top: -397px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 148px; top: -469px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 108px; top: -224px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -87px; top: -19px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -148px; top: -169px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -108px; top: -124px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
+            <div class="swiper-slide swiperItem2">
+                <img class="step2_title animate__animated animate__animated_step1_1" data-class="animate__fadeInRight" src="./assets/album/step2/step2_title.png"/>
+                <div class="step2_window animate__animated animate__animated_step2_2" data-class="animate__fadeIn">
+                    <img class="step2_loveImg animate__animated animate__animated_step2_3" data-class="animate__fadeInUp_step1_small" src="./assets/album/step2/step2_love.png" />
+                    <img class="step2_peopleImg animate__animated animate__animated_step2_4" data-class="animate__fadeInUp_step1_small" src="./assets/album/step2/step2_people.png" />
+                    <div class="giftListCtn">
+                        <div class="giftItemCtn animate__animated animate__animated_step2_5" data-class="animate__fadeInUp_step1_small">
+                            <!-- <img class="giftImg" src="" /> -->
+                            <!-- <span class="descCtn"></span> -->
+                        </div>
+                        <div class="giftItemCtn animate__animated animate__animated_step2_6" data-class="animate__fadeInUp_step1_small">
+                            <!-- <img class="giftImg" src="" /> -->
+                            <!-- <span class="descCtn"></span> -->
+                        </div>
                     </div>
                 </div>
-                <p class="p">Slide 2</p>
+                <div class="step2WordGroupCtn">
+                    <div class="wordItem animate__animated animate__animated_step2_7" data-class="animate__fadeInUp_step1_small">你第一次赠予我"<span class="yellowWord">水晶之恋</span>"礼物，</div>
+                    <div class="wordItem animate__animated animate__animated_step2_8" data-class="animate__fadeInUp_step1_small">这份惊喜如同璀璨星辰，</div>
+                    <div class="wordItem animate__animated animate__animated_step2_9" data-class="animate__fadeInUp_step1_small">照亮了我们的爱情，</div>
+                    <div class="wordItem animate__animated animate__animated_step2_10" data-class="animate__fadeInUp_step1_small">让我感受到你深沉的爱意，</div>
+                    <div class="wordItem animate__animated animate__animated_step2_11" data-class="animate__fadeInUp_step1_small">铭记于心</div>
+                </div>
             </div>
-            <div class="swiper-slide color2">
-                <!-- 花瓣效果 -->
-                <div class="ele-effect eles">
-                    <div class="effect-wrap">
-                        <i class="colorCtn" style="left: 15.7333vw; top: -34vw; animation-duration: 5s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 257px; top: -523px; animation-duration: 6s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 87px; top: -397px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 148px; top: -469px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: 108px; top: -224px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -87px; top: -19px;  animation-duration: 14s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -148px; top: -169px; animation-duration: 13s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
-                        <i class="colorCtn" style="left: -108px; top: -124px; animation-duration: 8s; background-image: url(https://h5static.hunbei.com/preview/static/img/star.dae0d8c.png);"></i>
+            
+            <div class="swiper-slide swiperItem3">
+                <img class="step3_title animate__animated animate__animated_step1_1" data-class="animate__fadeInRight" src="./assets/album/step3/step3_title.png"/>
+                <div class="wordCtn">
+                    <div class="worItem animate__animated animate__animated_step3_1" data-class="animate__fadeInUp_step1_small">感谢一直以来的陪伴</div>
+                    <div class="worItem animate__animated animate__animated_step3_2" data-class="animate__fadeInUp_step1_small">陪你唱歌、游戏</div>
+                    <div class="worItem animate__animated animate__animated_step3_3" data-class="animate__fadeInUp_step1_small">分享生活的点滴快乐</div>
+                    <div class="worItem animate__animated animate__animated_step3_4" data-class="animate__fadeInUp_step1_small">有你在身边每一天都充满欢声笑语，</div>
+                    <div class="worItem animate__animated animate__animated_step3_5" data-class="animate__fadeInUp_step1_small">爱意满满</div>
+                    <div class="smallWordCtn">
+                        <div class="worItem animate__animated animate__animated_step3_6" data-class="animate__fadeInUp_step1_small">我们一起钓鱼</div>
+                        <div class="worItem animate__animated animate__animated_step3_7" data-class="animate__fadeInUp_step1_small">我们一起吃饭</div>
+                        <div class="worItem animate__animated animate__animated_step3_8" data-class="animate__fadeInUp_step1_small">一起睡觉</div>
+                        <div class="worItem animate__animated animate__animated_step3_9" data-class="animate__fadeInUp_step1_small">一起打豆豆</div>
                     </div>
                 </div>
-                <p class="p">Slide 3</p>
+                <div class="bottomCtn">
+                    <img class="step3_love animate__animated" data-class="animate__fadeInLeft" src="./assets/album/step3/step3_love.png"/>
+                    <img class="step3_bottom2 animate__animated" data-class="animate__fadeInRight" src="./assets/album/step3/step3_bottom2.png"/>
+                    <img class="step3_people animate__animated animate__animated_step3_10" data-class="animate__fadeInUp" src="./assets/album/step3/step3_people.png"/>
+                    <img class="step3_bottom1 animate__animated" data-class="animate__fadeInUp_step1_small" src="./assets/album/step3/step3_bottom.png"/>
+                </div>
             </div>
         </div>
-        <!-- <div class="swiper-pagination"></div>  -->
     </div>
+    <img class="arrowDownImg" src="./assets/album/slideDownIcon.png" />
     <audio style="display: none;" id="myAudio" autoplay loop>
-        <source src='https://asset.tuwan.com/chatroom/sound/test-bgm.mp3' type="audio/mpeg">
+        <source src='./assets/mp3/onlinedo-output.mp3' type="audio/mpeg">
     </audio>
 
-<!-- Swiper JS -->
-<script src="https://asset.tuwan.com/chatroom/swiper/swiper-5.4.5.min.js"></script>
 <script>
-    window.onload = function() {
-        initSwiper();
-        const audio = document.getElementById('myAudio');
-        // window.addEventListener('mouseup', function() {
-        //     audio.play().catch(error => {
-        //         console.log('播放被阻止:', error);
-        //     });
-        // });
-        // audio.play().catch(error => {
-        //     console.log('自动播放被阻止:', error);
-        //     // 可以在这里添加用户交互提示
-        // });
-        $('.musicBtn').on('click', function() {
-            if (audio.paused) {
-                audio.play();
-                $(this).html('停止');
-            } else {
-                audio.pause();
-                $(this).html('播放');
-            }
-        });
-    };
     /**
      * 初始化swiper
      */
-    function initSwiper () {
+    async function initSwiper () {
         let changeTime = 500; //  翻页时间
         let swiper = new Swiper('.swiper-container',{
             direction : 'vertical',
@@ -234,7 +163,13 @@
                     }, changeTime);
                 },
                 transitionEnd: function() {
-                    slide=this.slides.eq(this.activeIndex);
+                    slide = this.slides.eq(this.activeIndex);
+                    // 滚动到最后一页隐藏箭头
+                    if (this.slides.length - 1 == this.activeIndex) {
+                       $('.arrowDownImg').hide();
+                    } else {
+                        $('.arrowDownImg').show();
+                    }
                     let doms = $(slide).find('.animate__animated');
                     Array.prototype.forEach.call(doms, function(dom) {
                         let subClass = dom.dataset.class;
@@ -244,6 +179,33 @@
             }
         });
     }
+
+    function handelInitMusic () {
+        const audio = document.getElementById('myAudio');
+        audio.play().then(() => {
+            $('.musicBtn').removeClass('off');
+            $('.musicBtn').addClass('on');
+        }).catch(error => {
+            console.log('自动播放被阻止:', error);
+            // 可以在这里添加用户交互提示
+        });
+        $('.musicBtn').on('click', function() {
+            if (audio.paused) {
+                audio.play();
+                $('.musicBtn').removeClass('off');
+                $('.musicBtn').addClass('on');
+            } else {
+                audio.pause();
+                $('.musicBtn').removeClass('on');
+                $('.musicBtn').addClass('off');
+            }
+        });
+    }
+   
+    $(document).ready(function () {
+        initSwiper();
+        handelInitMusic();
+    });
 </script>
 </body>
 </html>
